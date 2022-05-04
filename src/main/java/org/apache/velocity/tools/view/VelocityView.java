@@ -19,17 +19,6 @@ package org.apache.velocity.tools.view;
  * under the License.
  */
 
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.collections.ExtendedProperties;
 import org.apache.velocity.Template;
 import org.apache.velocity.app.VelocityEngine;
@@ -37,18 +26,23 @@ import org.apache.velocity.context.Context;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.io.VelocityWriter;
 import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.log.Log;
-import org.apache.velocity.tools.generic.log.LogChuteCommonsLog;
-import org.apache.velocity.tools.ClassUtils;
-import org.apache.velocity.tools.Scope;
-import org.apache.velocity.tools.Toolbox;
 import org.apache.velocity.tools.ToolboxFactory;
 import org.apache.velocity.tools.config.ConfigurationCleaner;
 import org.apache.velocity.tools.config.ConfigurationUtils;
 import org.apache.velocity.tools.config.FactoryConfiguration;
-import org.apache.velocity.tools.view.ViewToolContext;
+import org.apache.velocity.tools.generic.log.LogChuteCommonsLog;
 import org.apache.velocity.tools.view.context.ChainedContext;
 import org.apache.velocity.util.SimplePool;
+
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Writer;
+import java.util.List;
 
 /**
  * <p>The class provides the following features:</p>
@@ -687,7 +681,7 @@ public class VelocityView extends ViewToolManager
                 getLog().error(re.getMessage(), re);
                 throw re;
             }
-            getLog().debug(re.getMessage(), re);
+            getLog().error(re.getMessage(), re);
         }
         return config;
     }
